@@ -2,16 +2,16 @@
 
 ## Configuaration
 1. Add to build path:
-  - Spring jars 
+   - Spring jars 
 [[URL]()].
-  - AspectJ Weaver jar to use AOP (avoid Beta version)
+   - AspectJ Weaver jar to use AOP (avoid Beta version)
 [[URL](https://mvnrepository.com/artifact/org.aspectj/aspectjweaver)].
 2. Create Spring Java configuaration class with @Configuration, @EnableAspectJAutoProxy, @ComponentScan 
 [[JavaConfig]()].
 3. Create DAO class with @Component 
 [[AccountDAO]()].
 4. Create Main class 
-[[Main]()]
+[[LoggingApp]()]
    - Read Spring config Java class to get the context
    - Get the bean (class) from Spring container
    - Call the business method of the bean
@@ -26,6 +26,14 @@
 - Aspect
 - @Aspect
 - @Before advice
-- Pointcut expression
+- Pointcut expression: ```execution(return_type package.class.method(params))```
+  - Wildcards
+[[LoggingAspect]()]
+	- (): no args
+    - (*): one arg, any types
+    - (..): zero or more args, any types
+    - (fully qualified classname)
+  - Declarations
 
-## Notes
+## Notes/Tips
+- Quick copy fully qualified classname in that class
