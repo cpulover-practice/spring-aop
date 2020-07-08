@@ -3,9 +3,11 @@ package com.cpulover.aop.aspect;
 import java.util.List;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.core.annotation.Order;
@@ -37,11 +39,45 @@ public class LoggingAspect {
 		System.out.println(">>> Logging affter exception sillyMethod()");
 		System.out.println("    " + exp);
 	}
-	
+
 	// advice after DAO regardless of outcome
 	@After("com.cpulover.aop.aspect.CommonExpress.forDAOpackage()")
 	public void afterDAOFinally() {
 		System.out.println(">>> Logging after DAO regardless of outcome");
+	}
+
+	// advice around readBook()
+	@Around("execution(* com.cpulover.aop.dao.AccountDAO.readBook())")
+	public Object aroundReadBook(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+		System.out.println("Wearing glasses...");
+
+		long begin = System.currentTimeMillis();
+		Object result = proceedingJoinPoint.proceed();
+		long end = System.currentTimeMillis();
+
+		System.out.println("Throwing glasses...");
+		System.out.println("Time spent: " + (end - begin));
+
+		return result;
+	}
+
+	// advice around stupidMethod()
+	@Around("execution(* com.cpulover.aop.dao.AccountDAO.stupidMethod())")
+	public Object aroundStupidMethod(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+		Object result = null;
+		try {
+			result = proceedingJoinPoint.proceed();
+		} catch (Exception e) {
+			// log the exception
+			System.out.println("@Around catch exeption: " + e);
+
+			// we can handle exception
+			result = "Fixed";
+
+			// or re-throw exception
+			// throw e;
+		}
+		return result;
 	}
 
 	// pointcut expression matching to class MembershipDAO with fully qualified

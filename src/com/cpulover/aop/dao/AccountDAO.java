@@ -2,6 +2,7 @@ package com.cpulover.aop.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.stereotype.Component;
 
@@ -27,6 +28,25 @@ public class AccountDAO {
 	public void sillyMethod() {
 		System.out.println("In sillyMethod()...");
 		throw new RuntimeException("Bad day, huh?");
+	}
+	
+	//for @Around
+	public String readBook() {
+		//simulate a delay
+		try {
+			TimeUnit.SECONDS.sleep(5);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Reading book...");
+		return "Knowledge +1";
+	}
+	
+	//for @Around handle and re-throw exception
+	public void stupidMethod() {
+		System.out.println("In stupidMethod()...");
+		throw new RuntimeException("Bad day again, huh?");
 	}
 
 	public void addAccount() {

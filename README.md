@@ -30,6 +30,7 @@
   - @AfterReturning: run after the method (success execution), use ```returning``` to get return result 
   - @AfterThrowing: run after the method (if exception thrown), use ``throwing`` and Throwable the capture the exception.
   - @After: run after the method (regardless of outcome)
+  - @Around: run before and after the method, use ProceedingJoinPoint.proceed() to execute target method when desired.
 - Pointcut expression: ```execution(return_type package.class.method(params))```
   - Wildcards
 [[LoggingAspect]()]
@@ -56,4 +57,19 @@
 - Declare public pointcut expressions in a common class to share with other Aspects 
 [[CommonExpress]()].
 - Returnning result could be modified in @AfterReturning
-- @After runs before @AfterThrowing
+- Order execution: @Before -> @Around (before) -> Method -> @Around (after) -> @After -> @AfterThrowing
+- @AfterThrowing can not handle exception.
+- @Advice can handle/rethrow exception using try catch block 
+[[LoggingAspect]()].
+
+
+
+
+
+
+
+
+
+
+
+
