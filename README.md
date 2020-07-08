@@ -56,14 +56,14 @@
   - Objec[] and getArgs()
 
 ## Notes/Tips
-- Quick copy fully qualified classname in that class
+- Quick copy fully qualified classname from that class
 - Group related advices into seperate Aspects to order with *__@Order__*.
 - Declare public pointcut expressions in a common class to share with other Aspects 
 [[CommonExpress](https://github.com/cpulover-practice/spring-aop/blob/master/src/com/cpulover/aop/aspect/CommonExpress.java)].
-- Returnning result could be modified in *__@AfterReturning__*
-- Order execution: *__@Before__* -> *__@Around__* (before) -> Method -> *__@Around__* (after) -> *__@After__* -> *__@AfterThrowing
+- Returning result could be modified in *__@AfterReturning__*
+- Order execution: *__@Before__* -> *__@Around__* (before) -> Method -> *__@Around__* (after) -> *__@After__* -> *__@AfterThrowing__*
 - *__@AfterThrowing__* can not handle exception.
-- *__@Advice__* can handle/rethrow exception using try catch block 
+- *__@Advice__* can handle/rethrow exception using ```try catch``` block 
 [[LoggingAspect](https://github.com/cpulover-practice/spring-aop/blob/master/src/com/cpulover/aop/aspect/LoggingAspect.java)].
 
 
