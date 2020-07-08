@@ -19,6 +19,8 @@ public class TestingApp {
 			accountDAO.sillyMethod();
 		} catch (Exception e) {
 			//e.printStackTrace();
+		} finally {
+			System.out.println("Back to main program after @AfterThrowing");
 		}
 		context.close();
 	}

@@ -25,6 +25,7 @@ public class AccountDAO {
 
 	// for @AfterThrowing
 	public void sillyMethod() {
+		System.out.println("In sillyMethod()...");
 		throw new RuntimeException("Bad day, huh?");
 	}
 

@@ -28,7 +28,8 @@
 [[LoggingAspect]()]
   - @Before
   - @AfterReturning: run after the method (success execution), use ```returning``` to get return result 
-  - @AfterThrowing: run after the methos (if exception thrown), use ``throwing`` and Throwable the capture the exception.
+  - @AfterThrowing: run after the method (if exception thrown), use ``throwing`` and Throwable the capture the exception.
+  - @After: run after the method (regardless of outcome)
 - Pointcut expression: ```execution(return_type package.class.method(params))```
   - Wildcards
 [[LoggingAspect]()]
@@ -55,3 +56,4 @@
 - Declare public pointcut expressions in a common class to share with other Aspects 
 [[CommonExpress]()].
 - Returnning result could be modified in @AfterReturning
+- @After runs before @AfterThrowing

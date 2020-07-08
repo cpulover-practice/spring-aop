@@ -3,6 +3,7 @@ package com.cpulover.aop.aspect;
 import java.util.List;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
@@ -35,6 +36,12 @@ public class LoggingAspect {
 	public void afterThrowingSillyMethod(JoinPoint joinPoint, Throwable exp) {
 		System.out.println(">>> Logging affter exception sillyMethod()");
 		System.out.println("    " + exp);
+	}
+	
+	// advice after DAO regardless of outcome
+	@After("com.cpulover.aop.aspect.CommonExpress.forDAOpackage()")
+	public void afterDAOFinally() {
+		System.out.println(">>> Logging after DAO regardless of outcome");
 	}
 
 	// pointcut expression matching to class MembershipDAO with fully qualified
