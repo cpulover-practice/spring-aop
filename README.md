@@ -16,7 +16,12 @@
    - Get the bean (class) from Spring container
    - Call the business method of the bean
    - Close the context
-5. Create Aspect class with @Aspect and @Component and add advices
+5. Create Aspect class with @Aspect and @Component 
+[[LoggingAspect]()] 
+[[References]()]
+   - Setup logger [java.util.logging.Logger]
+   - Setup pointcut declarations with @Pointcut
+   - Add advices
 
 ## Concepts
 - @Configuration 
