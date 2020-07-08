@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.core.annotation.Order;
@@ -26,7 +27,14 @@ public class LoggingAspect {
 	@AfterReturning(pointcut = "execution(* com.cpulover.aop.dao.AccountDAO.findAccounts(..))", returning = "result")
 	public void afterReturnFindAccounts(JoinPoint joinPoint, List<Account> result) {
 		System.out.println(">>> Logging after findAccounts()");
-		System.out.println("    " + result);
+		System.out.println("    " + result + "\n");
+	}
+
+	// advice after throw exception sillyMethod()
+	@AfterThrowing(pointcut = "execution(* com.cpulover.aop.dao.AccountDAO.sillyMethod(..))", throwing = "exp")
+	public void afterThrowingSillyMethod(JoinPoint joinPoint, Throwable exp) {
+		System.out.println(">>> Logging affter exception sillyMethod()");
+		System.out.println("    " + exp);
 	}
 
 	// pointcut expression matching to class MembershipDAO with fully qualified

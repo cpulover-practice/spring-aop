@@ -24,10 +24,11 @@
 - @ComponentScan 
 - AnnotationConfigApplicationContext
 - Aspect with @Aspect 
-- Advice
+- Advice 
+[[LoggingAspect]()]
   - @Before
   - @AfterReturning: run after the method (success execution), use ```returning``` to get return result 
-[[LoggingAspect]()]
+  - @AfterThrowing: run after the methos (if exception thrown), use ``throwing`` and Throwable the capture the exception.
 - Pointcut expression: ```execution(return_type package.class.method(params))```
   - Wildcards
 [[LoggingAspect]()]

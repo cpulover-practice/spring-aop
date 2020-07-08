@@ -14,6 +14,12 @@ public class TestingApp {
 		accountDAO.addAccount(new Account(), true);
 		accountDAO.setName("cpulover");
 		accountDAO.findAccounts();
+		
+		try {
+			accountDAO.sillyMethod();
+		} catch (Exception e) {
+			//e.printStackTrace();
+		}
 		context.close();
 	}
 

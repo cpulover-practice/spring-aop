@@ -12,6 +12,7 @@ public class AccountDAO {
 	private String name;
 	private String code;
 
+	// for @AfterReturning
 	public List<Account> findAccounts() {
 		List<Account> list = new ArrayList<Account>();
 		// add sample data
@@ -20,6 +21,11 @@ public class AccountDAO {
 		list.add(new Account("Hieu3", 3));
 		System.out.println("In findAccounts()...");
 		return list;
+	}
+
+	// for @AfterThrowing
+	public void sillyMethod() {
+		throw new RuntimeException("Bad day, huh?");
 	}
 
 	public void addAccount() {
