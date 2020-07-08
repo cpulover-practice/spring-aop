@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-public class CommonAspect {
+public class CommonExpress {
 	// declare pointcut for DAO package
 	@Pointcut("execution(* com.cpulover.aop.dao.*.*(..))")
 	public void forDAOpackage() {

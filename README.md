@@ -23,9 +23,11 @@
 - @EnableAspectJAutoProxy 
 - @ComponentScan 
 - AnnotationConfigApplicationContext
-- Aspect and Advice
-- @Aspect
-- @Before advice
+- Aspect with @Aspect 
+- Advice
+  - @Before
+  - @AfterReturning: run after the method (success execution), use ```returning``` to get return result 
+[[LoggingAspect]()]
 - Pointcut expression: ```execution(return_type package.class.method(params))```
   - Wildcards
 [[LoggingAspect]()]
@@ -34,9 +36,9 @@
     - (..): zero or more args, any types
     - (fully qualified classname)
   - Declare with @Pointcut 
-[[CommonAspect]()]
+[[CommonExpress]()]
   - Combine pointcut expressions using &&, ||, !
-[[CommonAspect]()]
+[[CommonExpress]()]
 - @Order 
   - Lower numbers have higher predence.
   - Negative numbers are allowed.
@@ -46,9 +48,9 @@
   - MethodSignature and getSignature()
   - Objec[] and getArgs()
 
-
 ## Notes/Tips
 - Quick copy fully qualified classname in that class
 - Group related advices into seperate Aspects to order with @Order.
-- Declare public pointcut expressions in a common Aspects to share with other Aspects 
-[[]()].
+- Declare public pointcut expressions in a common class to share with other Aspects 
+[[CommonExpress]()].
+- Returnning result could be modified in @AfterReturning

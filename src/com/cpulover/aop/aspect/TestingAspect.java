@@ -12,28 +12,28 @@ import org.springframework.stereotype.Component;
 @Order(1)
 public class TestingAspect {
 
-	@Before("com.cpulover.aop.aspect.CommonAspect.forDAOpackage()")
+	@Before("com.cpulover.aop.aspect.CommonExpress.forDAOpackage()")
 	public void beforeTestAdvice(JoinPoint joinPoint) {
-		System.out.println(">>> Testing 1 before DAO package");
+		System.out.println(">>> Testing 1 before DAO");
 
 		// get method signature
 		MethodSignature methodSig = (MethodSignature) joinPoint.getSignature();
-		System.out.println("[!] Method: " + methodSig);
+		System.out.println("    [!] Method: " + methodSig);
 		
 		// get method parameters
 		Object[] args=joinPoint.getArgs();
 		for(Object arg : args) {
-			System.out.println("[!] Params: "+ arg);
+			System.out.println("    [!] Params: "+ arg);
 		}
 	}
 
-	@Before("com.cpulover.aop.aspect.CommonAspect.forDAOpackage()")
+	@Before("com.cpulover.aop.aspect.CommonExpress.forDAOpackage()")
 	public void beforeTestAdvice2() {
-		System.out.println(">>> Testing 2 before DAO package");
+		System.out.println(">>> Testing 2 before DAO");
 	}
 
-	@Before("com.cpulover.aop.aspect.CommonAspect.forDAOpackageNoGetterSetter()")
+	@Before("com.cpulover.aop.aspect.CommonExpress.forDAOpackageNoGetterSetter()")
 	public void beforeTestAdvice3() {
-		System.out.println(">>> Testing before DAO package except getters, setters");
+		System.out.println(">>> Testing before DAO except getters, setters");
 	}
 }

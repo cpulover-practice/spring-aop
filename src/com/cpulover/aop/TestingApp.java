@@ -11,9 +11,9 @@ public class TestingApp {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(JavaConfig.class);
 		AccountDAO accountDAO = context.getBean("accountDAO", AccountDAO.class);
 		
-		accountDAO.addAccount3(new Account(), true);
+		accountDAO.addAccount(new Account(), true);
 		accountDAO.setName("cpulover");
-		
+		accountDAO.findAccounts();
 		context.close();
 	}
 

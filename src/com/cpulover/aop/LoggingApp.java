@@ -18,8 +18,8 @@ public class LoggingApp {
 
 		// Call the business method
 		accountDAO.addAccount();
-		accountDAO.addAccount2(new Account());
-		accountDAO.addAccount3(new Account(), false);
+		accountDAO.addAccount(new Account());
+		accountDAO.addAccount(new Account(), false);
 		membershipDAO.addAccount();
 		membershipDAO.addVIP();
 		membershipDAO.addVIP2();

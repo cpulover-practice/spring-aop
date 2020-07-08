@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Order(-1)
 public class AnalyzingAspect {
-	@Before("com.cpulover.aop.aspect.CommonAspect.forDAOpackageNoGetterSetter()")
+	@Before("com.cpulover.aop.aspect.CommonExpress.forDAOpackageNoGetterSetter()")
 	public void beforeAnalyze() {
 		System.out.println(">>> Analyzing before DAO");
 	}
