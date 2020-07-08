@@ -4,6 +4,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import com.cpulover.aop.dao.AccountDAO;
 import com.cpulover.aop.dao.MembershipDAO;
+import com.cpulover.aop.entity.Account;
 
 public class LoggingApp {
 

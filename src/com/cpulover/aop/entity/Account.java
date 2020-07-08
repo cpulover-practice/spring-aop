@@ -1,4 +1,4 @@
-package com.cpulover.aop;
+package com.cpulover.aop.entity;
 
 public class Account {
 	private String name;

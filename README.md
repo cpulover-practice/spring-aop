@@ -23,7 +23,7 @@
 - @EnableAspectJAutoProxy 
 - @ComponentScan 
 - AnnotationConfigApplicationContext
-- Aspect
+- Aspect and Advice
 - @Aspect
 - @Before advice
 - Pointcut expression: ```execution(return_type package.class.method(params))```
@@ -33,7 +33,10 @@
     - (*): one arg, any types
     - (..): zero or more args, any types
     - (fully qualified classname)
-  - Declarations
+  - Declare with @Pointcut 
+[[TestingAspect]()]
+  - Combine pointcut expressions using &&, ||, !
+[[TestingAspect]()]
 
 ## Notes/Tips
 - Quick copy fully qualified classname in that class
