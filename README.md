@@ -2,8 +2,7 @@
 
 ## Configuaration
 1. Add dependencies:
-   - Spring framework  
-[[URL]()]
+   - Spring framework [[URL]()]
    - AspectJ Weaver: supports AOP (avoid Beta version) 
 [[URL](https://mvnrepository.com/artifact/org.aspectj/aspectjweaver)]
 2. Create Spring AOP Java configuaration class with *__@Configuration__*, *__@EnableAspectJAutoProxy__*, *__@ComponentScan__* 
@@ -54,7 +53,7 @@
   - Lower numbers have higher predence
   - Negative numbers are allowed
   - Does not have to be consecutive
-- JoinPoint: contains metadata of the method
+- JoinPoint: contains metadata of the business method
 [[TestingAspect](https://github.com/cpulover-practice/spring-aop/blob/master/src/com/cpulover/aop/aspect/TestingAspect.java)]
   - Get method signature by ```MethodSignature``` and ```JoinPoint.getSignature()```
   - Get method parameters by ```Objec[]``` and ```JoinPoint.getArgs()```
