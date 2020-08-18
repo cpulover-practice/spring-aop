@@ -1,6 +1,6 @@
-# Practiced Topics
+# Practice Topics
 
-## Configuaration
+## Configuration
 1. Add dependencies:
    - Spring framework [[URL]()]
    - AspectJ Weaver: supports AOP (avoid Beta version) 
