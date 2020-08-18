@@ -2,30 +2,34 @@
 
 ## Configuaration
 1. Add dependencies:
-   - Spring framework jars 
+   - Spring framework  
 [[URL]()]
-   - AspectJ Weaver jar: supports AOP (avoid Beta version)
+   - AspectJ Weaver: supports AOP (avoid Beta version) 
 [[URL](https://mvnrepository.com/artifact/org.aspectj/aspectjweaver)]
 2. Create Spring AOP Java configuaration class with *__@Configuration__*, *__@EnableAspectJAutoProxy__*, *__@ComponentScan__* 
 [[JavaConfig](https://github.com/cpulover-practice/spring-aop/blob/master/src/com/cpulover/aop/JavaConfig.java)].
-3. Create DAO class with *__@Component__* 
-[[AccountDAO](https://github.com/cpulover-practice/spring-aop/blob/master/src/com/cpulover/aop/dao/AccountDAO.java)].
-4. Create Main class 
+3. Create bean class with *__@Component__* 
+[[Account](https://github.com/cpulover-practice/spring-aop/blob/master/src/com/cpulover/aop/dao/AccountDAO.java)].
+4. Create Main app class 
 [[LoggingApp](https://github.com/cpulover-practice/spring-aop/blob/master/src/com/cpulover/aop/LoggingApp.java)]
-   1. Read Spring config Java class to get the context
-   2. Get the bean (class) from Spring container
-   3. Call the business method of the bean
-   4. Close the context
-5. Create Aspect class with *__@Aspect__* and *__@Component__* 
+   1. Read Spring config Java class to get the context 
+   ```
+   AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(JavaConfig.class);
+   ```
+   2. Get bean class from Spring container 
+   ```
+   BeanClass aBean = context.getBean("aBean", BeanClass.class);
+   ```
+   3. Call business methods of the bean
+   4. Close the context: ```context.close();```
+5. Create Aspect class with *__@Aspect__* and *__@Component__* (to group related Advices) 
 [[LoggingAspect](https://github.com/cpulover-practice/spring-aop/blob/master/src/com/cpulover/aop/aspect/LoggingAspect.java)] 
-   1. Setup logger [java.util.logging.Logger] or use *__Logger__* with Lombok
-   2. Setup pointcut declarations with *__@Pointcut__*
-   3. Add advices
+   1. Setup logger [java.util.logging.Logger] or use *__@Logger__* from Lombok (to log Advices output in the same thread? as Spring)
+   2. Setup Pointcut declarations with *__@Pointcut__* (to associate business methods of bean with Advices)
+   3. Create Advices (to execute whatever code with associated business methods)
 
 ## Concepts
-- *__@Configuration__* 
 - *__@EnableAspectJAutoProxy__*
-- *__@ComponentScan__* 
 - AnnotationConfigApplicationContext
 - Aspect with *__@Aspect__*
 - Advice 
@@ -60,7 +64,7 @@
 - 📌 Group related advices into one Aspect to order with *__@Order__* (i.e., logging aspect, testing aspect)
 - 📌 Declare public pointcut expressions in a common Aspect to share with other Aspects 
 [[CommonAspect](https://github.com/cpulover-practice/spring-aop/blob/master/src/com/cpulover/aop/aspect/CommonExpress.java)].
-- ℹ️ Order execution: *__@Before__* -> *__@Around__* (before) -> Method -> *__@Around__* (after) -> *__@After__* -> *__@AfterThrowing__*
+- ℹ️ Order execution: *__@Before__* -> *__@Around__* (before) -> Business method -> *__@Around__* (after) -> *__@After__* -> *__@AfterThrowing__*
 
 
 
